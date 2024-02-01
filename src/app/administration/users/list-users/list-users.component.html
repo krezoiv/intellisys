@@ -1,0 +1,118 @@
+<div class="container">
+    <mat-card class="custom-card">
+        <div class="fiter">
+            <mat-form-field appearance="outline">
+                <mat-label for="filter">Buscar Empleado</mat-label>
+                <input id="filter" matInput (keyup)="applyFilter($event)" placeholder="Ingrese alguna coincidencia"
+                    #input autocomplete="off">
+                <mat-hint>Por favor, busque al empleado que desea modificar o eliminar</mat-hint>
+            </mat-form-field>
+        </div>
+    </mat-card>
+
+    <br>
+
+    <mat-card class="custom-card">
+        <div class="table-container">
+
+            <table mat-table [dataSource]="dataSource" matSort>
+
+                <ng-container matColumnDef="position">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> No. </th>
+                    <td mat-cell *matCellDef="let element; let i = index"> {{ i + 1 }} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="idUser">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header > idUser </th>
+                    <td mat-cell *matCellDef="let element" > {{element.idUser}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="userCode">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Código Empleado </th>
+                    <td mat-cell *matCellDef="let element"> {{element.userCode}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="idEmployee">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header [style.display]="'none'"> idEmployee </th>
+                    <td mat-cell *matCellDef="let element" [style.display]="'none'"> {{element.idEmployee}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="names">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Nombre de Usuario </th>
+                    <td mat-cell *matCellDef="let element"> {{element.firstName}} {{element.firstLastName}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="userName">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Usuario</th>
+                    <td mat-cell *matCellDef="let element">{{element.userName}} </td>
+                </ng-container>
+
+
+                <ng-container matColumnDef="firstName" >
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header [style.display]="'none'"> Primer Nombre </th>
+                    <td mat-cell *matCellDef="let element" [style.display]="'none'"> {{element.firstName}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="secondName" >
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header [style.display]="'none'"> Segundo Nombre </th>
+                    <td mat-cell *matCellDef="let element" [style.display]="'none'"> {{element.secondName}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="firstLastName">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header [style.display]="'none'"> Primer Apellido </th>
+                    <td mat-cell *matCellDef="let element" [style.display]="'none'"> {{element.firstLastName}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="secondLastName">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header [style.display]="'none'"> Segundo Apellido </th>
+                    <td mat-cell *matCellDef="let element" [style.display]="'none'"> {{element.secondLastName}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="idRole">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header [style.display]="'none'"> idRole </th>
+                    <td mat-cell *matCellDef="let element" [style.display]="'none'"> {{element.idRole}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="roleName">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Rol </th>
+                    <td mat-cell *matCellDef="let element"> {{element.roleName}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="idStatus">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header [style.display]="'none'"> idStus </th>
+                    <td mat-cell *matCellDef="let element" [style.display]="'none'"> {{element.idStatus}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="status">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> status </th>
+                    <td mat-cell *matCellDef="let element"> {{element.status}} </td>
+                </ng-container>
+
+
+                <ng-container matColumnDef="actions">
+                    <th mat-header-cell *matHeaderCellDef> Acciones</th>
+                    <td mat-cell *matCellDef="let row">
+                      <div class="action-buttons">
+                        <button mat-icon-button color="primary" class="pointer" matTooltip="editar empleado" >
+                          <mat-icon>edit</mat-icon>
+                        </button>
+                        <button mat-icon-button color="accent" class="pointer" matTooltip="dar de baja empleado" (click)="deActivateUser(row.idUser)">
+                          <mat-icon>block</mat-icon>
+                        </button>
+                        <button mat-icon-button color="warn" class="pointer" matTooltip="eliminar empleado" >
+                          <mat-icon>delete</mat-icon>
+                        </button>
+                      </div>
+                    </td>
+                  </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="displayColumns" class="table-header"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayColumns;" class="highlight"></tr>
+               
+            </table>
+            <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
+        </div>
+    </mat-card>
+
+
+</div>

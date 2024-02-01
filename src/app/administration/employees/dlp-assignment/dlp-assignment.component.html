@@ -1,0 +1,84 @@
+<div mat-dialog-content>
+    <form [formGroup]="dlpAssignmentForm">
+        <div [align]="'center'">
+            <h1><span>Asignación de DLP  <mat-icon>assignment_ind</mat-icon></span></h1>
+        </div>
+
+        <hr>
+
+        
+            <div class="div" class="row">
+                <div class="col-md-6">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Código de Empleado:</mat-label>
+                        <input formControlName="code" matInput placeholder="ingrese código del empleado" />
+                        <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+                        <mat-hint>Ruta que se agregará</mat-hint>
+                    </mat-form-field>
+                </div>
+    
+                <div class="col-md-6">
+                    <div class="div" mat-dialog-action [align]="'left'">
+                        <button class="button" (click)="loadEmployeeData()">  Buscar  <mat-icon>search</mat-icon></button>
+                        
+                    </div>
+                </div>
+    
+    
+            </div>
+      
+        <hr>
+        <div class="row">
+            <div class="col-md-6">
+                <mat-form-field appearance="outline">
+                    <mat-label>Nombre:</mat-label>
+                    <input matInput formControlName="firstName" />
+                </mat-form-field>
+            </div>
+
+            <div class="col-md-6">
+                <mat-form-field appearance="outline">
+                    <mat-label>Apeliido:</mat-label>
+                    <input matInput formControlName="firstLastName" />
+                </mat-form-field>
+            </div>
+
+
+        </div>
+
+
+        
+            <div class="row">
+                <div class="col-md-4">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Puesto:</mat-label>
+                        <input matInput formControlName="workPosition" />
+                    </mat-form-field>
+                </div>
+                <div class="col-md-4">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Sede:</mat-label>
+                        <input matInput formControlName="campusName" />
+                    </mat-form-field>
+                </div>
+
+                <div class="col-md-4">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Ruta:</mat-label>
+                        <mat-select formControlName="idRoute">
+                            <mat-option *ngFor="let route of routes" [value]="route.idRoute">
+                                {{ route.routeName }}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+            </div>
+       
+        <hr>
+       
+            <div class="div" mat-dialog-action [align]="'left'">
+                <button class="buttonSave" (click)="saveDlpAssginment()">  Guardar <mat-icon>cloud_done</mat-icon></button>
+            </div>
+        
+    </form>
+</div>

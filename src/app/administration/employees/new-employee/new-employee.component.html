@@ -1,0 +1,178 @@
+<div class="container">
+  <div mat-dialog-content>
+    <div class="form-container">
+      <form autocomplete="off" [formGroup]="employeeForm" (ngSubmit)="createEmployee()">
+        <div [align]="'center'">
+          <h1><span style="text-decoration: underline;"> <mat-icon>keyboard_arrow_left</mat-icon>Registrar Nuevo
+              Empleado<mat-icon>keyboard_arrow_right</mat-icon></span></h1>
+        </div>
+
+        <mat-grid-list cols="4" rowHeight="90px">
+
+          <mat-grid-tile [colspan]="2" [rowspan]="1">
+            <mat-form-field appearance="outline">
+              <mat-label>Primer Nombre:</mat-label>
+              <input matInput formControlName="firstName" />
+              <mat-hint> <span style="font-size: 9px;" *ngIf="isValidField('firstName')"
+                  class="form-text text-danger">{{ fieldsErrorMessages.patternRequired}}</span></mat-hint>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+              <mat-label>Segundo Nombre:</mat-label>
+              <input matInput formControlName="secondName" />
+              <mat-hint> <span style="font-size: 9px;" *ngIf="isValidField('secondName')"
+                  class="form-text text-danger">{{ fieldsErrorMessages.patternNotRequired}}</span></mat-hint>
+            </mat-form-field>
+          </mat-grid-tile>
+
+          <mat-grid-tile [colspan]="2" [rowspan]="5">
+            <img src="../../../../assets/imgs/empleado.jpeg" height="350" width="350">
+          </mat-grid-tile>
+
+
+          <mat-grid-tile [colspan]="2" [rowspan]="1">
+            <mat-form-field appearance="outline">
+              <mat-label>Primer Apellido:</mat-label>
+              <input matInput formControlName="firstLastName" />
+              <mat-hint> <span style="font-size: 9px;" *ngIf="isValidField('firstLastName')"
+                  class="form-text text-danger">{{ fieldsErrorMessages.patternRequired}}</span></mat-hint>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+              <mat-label>Segundo Apellido:</mat-label>
+              <input matInput formControlName="secondLastName" />
+              <mat-hint> <span style="font-size: 9px;" *ngIf="isValidField('secondLastName')"
+                  class="form-text text-danger">{{ fieldsErrorMessages.patternNotRequired}}</span></mat-hint>
+            </mat-form-field>
+          </mat-grid-tile>
+
+
+          <mat-grid-tile [colspan]="2" [rowspan]="1">
+            <mat-form-field appearance="outline">
+              <mat-label>dpi:</mat-label>
+              <input matInput formControlName="dpi" />
+              <mat-hint> <span style="font-size: 9px;" *ngIf="isValidField('dpi')" class="form-text text-danger">{{
+                  fieldsErrorMessages.dpi}}</span></mat-hint>
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width" class="form-group">
+              <mat-label>Fecha de Ingreso</mat-label>
+              <input matInput [matDatepicker]="picker" formControlName="hireDate" [max]="maxDate">
+              <mat-hint><span>dd/MM/yyyy </span> <span style="font-size: 9px;" *ngIf="isValidField('hireDate')"
+                  class="form-text text-danger">{{ fieldsErrorMessages.patternRequired}}</span></mat-hint>
+              <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+
+            </mat-form-field>
+          </mat-grid-tile>
+
+          <mat-grid-tile [colspan]="2" [rowspan]="1">
+            <mat-form-field appearance="outline">
+              <mat-label>Departamento:</mat-label>
+
+              <mat-select formControlName="idDepartment" (selectionChange)="onDepartmentSelected($event)">
+                <mat-option *ngFor="let department of departments" [value]="department.idDepartment">
+                  {{ department.department }}
+                </mat-option>
+              </mat-select>
+              <mat-hint> <span style="font-size: 9px;" *ngIf="isValidField('idDepartment')"
+                  class="form-text text-danger">{{ fieldsErrorMessages.required}}</span></mat-hint>
+            </mat-form-field>
+
+
+            <mat-form-field appearance="outline">
+              <mat-label>Municipio:</mat-label>
+              <mat-select formControlName="idMunicipality">
+                <mat-option *ngFor="let municipality of municipality" [value]="municipality.idMunicipality">
+                  {{ municipality.municipality }}
+                </mat-option>
+              </mat-select>
+              <mat-hint> <span style="font-size: 9px;" *ngIf="isValidField('idMunicipality')"
+                  class="form-text text-danger">{{ fieldsErrorMessages.required}}</span></mat-hint>
+            </mat-form-field>
+
+          </mat-grid-tile>
+
+          <mat-grid-tile [colspan]="2" [rowspan]="1">
+            <mat-form-field appearance="outline">
+              <mat-label>Referencia de Dirección:</mat-label>
+              <input matInput formControlName="addressReference" />
+              <mat-hint> <span style="font-size: 9px;" *ngIf="isValidField('addressReference')"
+                  class="form-text text-danger">{{ fieldsErrorMessages.required}}</span></mat-hint>
+            </mat-form-field>
+
+          </mat-grid-tile>
+
+        </mat-grid-list>
+        <hr />
+
+
+        <h1>Cuentas Bancarias</h1>
+
+        <mat-grid-list cols="4" rowHeight="90px">
+
+          <mat-grid-tile [colspan]="4" [rowspan]="1">
+            <mat-form-field appearance="outline">
+              <mat-label>Cuenta BAC:</mat-label>
+              <input matInput formControlName="BACaccount" placeholder="número de cuenta del bac" />
+              <mat-hint> <span style="font-size: 9px;" *ngIf="isValidField('BACaccount')"
+                  class="form-text text-danger">{{ fieldsErrorMessages.onlyNumber}}</span></mat-hint>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+              <mat-label>Cuenta BAM:</mat-label>
+              <input matInput formControlName="BAMaccount" placeholder="número de cuenta del bam" />
+              <mat-hint> <span style="font-size: 9px;" *ngIf="isValidField('BAMaccount')"
+                  class="form-text text-danger">{{ fieldsErrorMessages.onlyNumber}}</span></mat-hint>
+            </mat-form-field>
+          </mat-grid-tile>
+
+        </mat-grid-list>
+        <h1>Tipo de Empleado</h1>
+
+        <mat-grid-list cols="4" rowHeight="90px">
+          <mat-grid-tile [colspan]="4" [rowspan]="1">
+            <mat-form-field appearance="outline">
+              <mat-label>Sede:</mat-label>
+              <mat-select formControlName="idCampus">
+                <mat-option *ngFor="let campusItem of campus" [value]="campusItem.idCampus">
+                  {{ campusItem.campusName }}
+                </mat-option>
+              </mat-select>
+              <mat-hint> <span style="font-size: 9px;" *ngIf="isValidField('idCampus')" class="form-text text-danger">{{
+                  fieldsErrorMessages.required}}</span></mat-hint>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+              <mat-label>Tipo Empleado:</mat-label>
+              <mat-select formControlName="idEmployeeType" (selectionChange)="onEmployeesTypeSelected($event)">
+                <mat-option *ngFor="let employeeTypeItem of employeeType" [value]="employeeTypeItem.idEmployeeType">
+                  {{ employeeTypeItem.employeeType }}
+                </mat-option>
+              </mat-select>
+              <mat-hint> <span style="font-size: 9px;" *ngIf="isValidField('idEmployeeType')"
+                  class="form-text text-danger">{{ fieldsErrorMessages.required}}</span></mat-hint>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+              <mat-label>Posición de Trabajo:</mat-label>
+              <mat-select formControlName="idWorkposition">
+                <mat-option *ngFor="let workPositionItem of workPosition" [value]="workPositionItem.idWorkposition">
+                  {{ workPositionItem.workPosition }}
+                </mat-option>
+              </mat-select>
+              <mat-hint> <span style="font-size: 9px;" *ngIf="isValidField('idWorkposition')"
+                  class="form-text text-danger">{{ fieldsErrorMessages.required}}</span></mat-hint>
+            </mat-form-field>
+
+          </mat-grid-tile>
+        </mat-grid-list>
+
+        <div class="div" mat-dialog-action [align]="'center'">
+          <button class="btnGreen-grad">Guardar <mat-icon>cloud_done</mat-icon></button>
+        </div>
+
+      </form>
+    </div>
+  </div>
+</div>

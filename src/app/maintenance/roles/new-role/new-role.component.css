@@ -1,0 +1,28 @@
+.new-employee-form {
+    width: 80%; /* Ancho deseado para el formulario */
+    margin: 0 auto;
+    padding: 20px;
+    text-align: left; /* Alineación a la izquierda */
+    
+    
+  }
+  
+  .form-group {
+    margin-bottom: 15px;
+  }
+  
+ 
+  mat-form-field {
+    width: 100%;
+  }
+  
+ 
+  form {
+    width: 50%;
+    margin: auto;
+    padding: 10px 20px;
+    box-sizing: border-box;
+    margin-top: 20px;
+    min-height: 100vh;
+    background-color: white;
+}

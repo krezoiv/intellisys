@@ -1,0 +1,19 @@
+
+
+
+<div mat-dialog-content>
+    
+    <form [formGroup]="roleForm">
+     <h1>Agregando Nuevo Role</h1>
+     <mat-form-field appearance="outline">
+         <mat-label>Tipo de Rol</mat-label>
+         <input formControlName="roleName" matInput placeholder="digite el nombre del nuevo rol" />
+         <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+         <mat-hint>tipo de rol que se agregará</mat-hint>
+     </mat-form-field>
+ 
+     <div mat-dialog-action [align]="'end'">
+         <button style="margin-left: 8px;" mat-raised-button color="primary" (click)="createRole()">Guardar</button>
+     </div>
+    </form>
+ </div>

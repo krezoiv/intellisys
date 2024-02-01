@@ -1,0 +1,96 @@
+/* You can add global styles to this file, and also import other style files */
+
+html,
+.custom-card {
+  width: auto;
+  padding-top: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
+  overflow-x: auto;
+  background: transparent; /* Hacer el fondo transparente */
+}
+
+body {
+  
+  padding-left: 60px;
+  padding-right: 5px;
+  padding-top: 0px;
+  padding-bottom: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  background-color: #E0E0E0;
+
+  
+}
+
+
+.text-danger {
+  color: red;
+}
+
+
+
+.card {
+  margin-bottom:0%;
+  background: transparent; /* Hacer el fondo transparente */
+
+  
+}
+.card .card-subtitle {
+  font-weight: 300;
+  margin-bottom: 15px;
+ 
+}
+.card .card-title {
+  position: relative;
+
+}
+
+.fix-sidebar .left-sidebar {
+  position: fixed;
+}
+
+/*colore verde botones*/
+.btnGreen-grad {
+  background-image: linear-gradient(to right, #02AAB0 0%, #00CDAC  51%, #02AAB0  100%);
+  margin: 10px;
+  padding: 15px 45px;
+  text-align: center;
+  text-transform: uppercase;
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: white;            
+  box-shadow: 0 0 20px #eee;
+  border-radius: 10px;
+  display: block;
+}
+
+.btnGreen-grad:hover {
+  background-position: right center; /* change the direction of the change here */
+  color: #fff;
+  text-decoration: none;
+}
+
+.btnRed-grad {
+  background-image: linear-gradient(to right, #e52d27 0%, #b31217  51%, #e52d27  100%);
+  margin: 10px;
+  padding: 15px 45px;
+  text-align: center;
+  text-transform: uppercase;
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: white;            
+  box-shadow: 0 0 20px #eee;
+  border-radius: 10px;
+  display: block;
+}
+
+.btnRed-grad:hover {
+  background-position: right center; /* change the direction of the change here */
+  color: #fff;
+  text-decoration: none;
+}
+
+
+
+html, body { height: auto; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

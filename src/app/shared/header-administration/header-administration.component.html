@@ -1,0 +1,30 @@
+<p>
+    <mat-toolbar class="toolbar"> <!-- Agrega la clase CSS red-background -->
+
+      <span class="toolbar-title" >Administración &nbsp;</span>
+      <span *ngIf="userName">Bienvenido, {{ userName }}  &nbsp; &nbsp; </span>
+      <span class="toolbar-divider"> ||&nbsp; </span>
+
+      <a class="link-style" [matMenuTriggerFor]="UsersMenu">
+        Usuarios
+        <mat-icon class="icon-above">person_pin</mat-icon> <!-- Icono de flecha hacia abajo -->
+      </a>
+
+      <span class="toolbar-item">
+      <a class="link-style" [matMenuTriggerFor]="EmployeeMenu">
+       | Empleados 
+        <mat-icon class="icon-above">person_pin</mat-icon> <!-- Icono de flecha hacia abajo -->
+      </a>
+    </span>
+      <mat-menu #UsersMenu="matMenu">
+        <a mat-menu-item routerLink="/dashboard/administracion/usuarios/nuevo-usuario">Agregar Usuario</a>
+        <a mat-menu-item routerLink="/dashboard/administracion/usuarios/listado-de-usuarios">Listado de Usuario</a> 
+      </mat-menu>
+
+      <mat-menu #EmployeeMenu="matMenu">
+        <a mat-menu-item routerLink="/dashboard/administracion/empleados/nuevo-empleado">Agregar Empleado</a>
+        <a mat-menu-item routerLink="/dashboard/administracion/empleados/listado-de-empleados">Listado de Empleado</a>
+        <a mat-menu-item routerLink="/dashboard/administracion/asignacion-dlp">Asignación DLP</a>
+      </mat-menu>
+    </mat-toolbar>
+  </p>

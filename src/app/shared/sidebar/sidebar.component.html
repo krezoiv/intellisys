@@ -1,0 +1,17 @@
+<div class="main-sidebar fixed-sidebar">
+    <nav class="main-menu">
+        
+    <ul>
+        <li *ngFor="let item of sideBarMenuItems">
+            <a [routerLink]="item.url">
+                <span class="{{item.icon}}"></span>
+                <span class="nav-text">
+                {{item.title}}
+                </span>
+            </a>
+        
+        </li>
+        
+    </ul>
+    </nav>
+</div>

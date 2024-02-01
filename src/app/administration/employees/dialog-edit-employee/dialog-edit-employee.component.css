@@ -1,0 +1,28 @@
+
+mat-form-field {
+    width: 100%;
+    padding-top: 15px; /* Ajusta el valor según tus necesidades */
+  }
+
+  .section{
+    width: 100%;
+    padding-top: 25px; /* Ajusta el valor según tus necesidades */
+  }
+
+  .readonly-input {
+    pointer-events: none; /* Evita la interacción del usuario con el elemento */
+    
+  }
+
+  .btnGreen-grad {
+    width: 70%; /* El botón ocupará todo el ancho del contenedor */
+    height: 50px;
+   
+    color: white;
+    
+    border:1px; /* Elimina el borde del botón */
+    cursor: pointer; /* Cambia el cursor al pasar el ratón por encima */
+    border-radius: 5px; /* Agrega bordes redondeados */
+  }
+  
+  
