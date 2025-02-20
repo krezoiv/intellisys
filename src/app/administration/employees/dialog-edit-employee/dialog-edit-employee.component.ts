@@ -219,7 +219,6 @@ export class DialogEditEmployeeComponent {
       .getMunicipalityById(idMunicipality)
       .subscribe((municipality) => {
         this.municipality = municipality;
-        console.log(municipality);
       });
   }
 
@@ -262,7 +261,7 @@ export class DialogEditEmployeeComponent {
       const updatedEmployeeData = this.employeeForm.value;
 
       Swal.fire({
-        title: '¿Estás seguro de guardar?',
+        title: '¿Estás seguro de modificar?',
         text: '!! Confirmar !!',
         icon: 'warning',
         showCancelButton: true,

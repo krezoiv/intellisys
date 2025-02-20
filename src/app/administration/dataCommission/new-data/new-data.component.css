@@ -1,0 +1,165 @@
+html, body {
+  height: 100%;
+  margin: 0; /* Esto elimina cualquier margen predeterminado */
+  padding: 0; /* Esto elimina cualquier relleno predeterminado */
+}
+
+
+
+.heading-container {
+    text-align: center;
+  }
+  
+  .title {
+    font-size: 20px;
+  }
+
+ 
+  .quarter-width {
+    flex-basis: calc(25% - 16px); /* Calcula el ancho del 25% con margen */
+  }
+  
+  .half-width {
+    flex-basis: calc(50% - 16px); /* Calcula el ancho del 50% con margen */
+  }
+  
+/* Estilos para dispositivos más grandes (por defecto) */
+.container {
+    padding-left: 0%; /* Mantiene el espacio en el lado izquierdo */
+  }
+  
+  /* Media query para dispositivos más pequeños, como teléfonos móviles */
+  @media (max-width: 968px) {
+    .container {
+      padding-left: 30%; /* Elimina el espacio en el lado izquierdo */
+      width: 100%;
+    }
+  }
+  .form-group {
+      margin-bottom: 15px;
+    }
+  
+  
+  form {
+    max-width: 100%;
+  
+    padding-left: 0px;
+     /* Aumenta el espacio alrededor del formulario */
+    box-sizing: border-box;
+    margin-top: 20px;
+   
+    border: 0px solid #ccc; /* Agrega un borde de 1px sólido */
+    border-radius: 5px; /* Agrega bordes redondeados */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Agrega sombra para resaltar el formulario */
+  }
+    
+    @media (max-width: 768px) {
+      form {
+        max-width: 100%; /* Cambia el ancho máximo para ocupar todo el ancho disponible */
+        padding-left: 0;
+      }
+    }
+  
+  
+    .mat-grid-tile {
+      flex: 1; /* Puedes ajustar el valor según tus necesidades */
+     
+    }
+    
+    
+    mat-form-field{
+      width: 100%;
+      padding-left: 0px;
+      padding-right: 10px;
+      height: 75%;
+      
+    }
+  
+    /* Estilo para el mat-form-field al pasar el ratón sobre él */
+  mat-form-field:hover {
+    transform: none; /* Elimina la transformación al pasar el ratón */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Cambia la sombra al pasar el ratón sobre el campo */
+    transition: box-shadow 0.3s ease; /* Agrega una transición suave */
+    background-color: #f0f0f0; /* Cambia el color de fondo al pasar el ratón sobre el campo */
+    border: 1px solid #007bff; /* Cambia el color del borde al pasar el ratón sobre el campo */
+  }
+  /* Cambios para ajustar los elementos en dispositivos más pequeños */
+  @media (max-width: 768px) {
+    .mat-grid-tile {
+      flex: 2; /* Ajusta el valor según sea necesario para colocar los elementos uno encima del otro */
+    }
+  
+    mat-form-field {
+      width: 100%; /* Haz que los campos abarquen todo el ancho del contenedor */
+      padding-left: 0;
+    }
+  }
+  
+  /* Añade estos estilos para evitar que los campos estén demasiado juntos en dispositivos pequeños */
+  .mat-form-field {
+    margin-bottom: 15px;
+   
+  }
+    
+    .btnGreen-grad{
+      width: 50%; /* El botón ocupará todo el ancho del contenedor */
+      height: 50px;
+      padding-right: 10px;
+      margin-top: 15px; /* Espacio superior de 10px */
+      margin-bottom: 15px;
+      padding-left: 20px;
+      border: none; /* Elimina el borde del botón */
+      cursor: pointer; /* Cambia el cursor al pasar el ratón por encima */
+      border-radius: 5px; /* Agrega bordes redondeados */
+    }
+    
+   
+    mat-icon {
+      margin-left: 10px; /* Espacio a la derecha del ícono */
+    }
+    
+
+    .custom-card {
+      border: 2px solid #ccc; /* Define el borde de la card */
+      border-radius: 4px; /* Define el radio de los bordes */
+      padding: 16px; /* Añade espacio interno para que el contenido no esté demasiado pegado al borde */
+      margin-bottom: 20px; /* Ajusta el espacio entre este mat-card y el siguiente */
+    }
+
+    .custom-card + .custom-card {
+      /* Estilos para el segundo mat-card y los siguientes */
+      margin-top: 20px; /* Ajusta el espacio entre este mat-card y el anterior */
+    }
+
+  .button-tile {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.custom-button {
+  background-color: yellow;
+  color: black; /* Ajusta el color del texto si es necesario */
+  border-radius: 5px;
+  padding: 10px 20px; /* Ajusta el espaciado interno */
+  font-size: 16px; /* Ajusta el tamaño del texto */
+  border: none; /* Elimina el borde si lo deseas */
+  transition: background-color 0.3s ease; /* Añade una transición suave */
+}
+
+.custom-button:hover {
+  background-color: #ffea00; /* Cambia el color al pasar el cursor sobre el botón */
+}
+
+
+.table-header {
+  background-color: purple;
+  color: white; /* Opcional: Si deseas que el texto del encabezado sea blanco */
+  text-align: center;
+  
+}
+
+::ng-deep .mat-row .mat-cell:nth-child(6) {
+  background-color: green;
+  color: white;
+}

@@ -1,0 +1,75 @@
+<div class="container">
+  <div mat-dialog-content>
+    <div class="form-container">
+      <form autocomplete="off" [formGroup]="commissionDetailForm" (ngSubmit)="updateCommissionDetail()">
+        <div [align]="'center'">
+          <h1><span>Modificar Detalle de Comisión</span></h1>
+        </div>
+
+        <!-- Contenedor flex para alinear los elementos en columnas -->
+        <div class="flex-container">
+          
+        
+          <mat-grid-list cols="4" rowHeight="90px">
+            <mat-grid-tile colspan="1" rowspan="1">
+              <mat-form-field appearance="outline">
+                <mat-label>Tipo de Documento:</mat-label>
+                <mat-select formControlName="idCommissionType" (selectionChange)="onCommissionTypeSelected($event)">
+                  <mat-option *ngFor="let commissionType of commissionType" [value]="commissionType.idCommissionType">
+                    {{ commissionType.commissionType }}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </mat-grid-tile>
+            
+            <mat-grid-tile colspan="1" rowspan="1">
+              <mat-form-field appearance="outline">
+                <mat-label>Concepto:</mat-label>
+                <mat-select formControlName="idDataCommissionConcept">
+                  <mat-option *ngFor="let concepts of commissionConcepts" [value]="concepts.idDataCommissionConcept">
+                    {{ concepts.concept }}
+                  </mat-option>
+                </mat-select>
+               
+              </mat-form-field>
+            </mat-grid-tile>
+            <mat-grid-tile [colspan]="1" rowspan="1" class="button-tile">
+              <button mat-raised-button color="warn" (click)="addNewConcept()" class="custom-button">Agregar Nuevo Concepto</button>
+            </mat-grid-tile>
+            
+            <mat-grid-tile colspan="1" rowspan="1">
+              <mat-form-field class="example-full-width">
+                <mat-label>Referencia</mat-label>
+                <input matInput formControlName="reference" value="reference" placeholder="codigo">
+              </mat-form-field>
+            </mat-grid-tile>
+          </mat-grid-list>
+    
+          <mat-grid-list cols="4" rowHeight="90px">
+            <mat-grid-tile colspan="3" rowspan="1">
+              <mat-form-field appearance="outline">
+                <mat-label>Descripción</mat-label>
+                <input matInput formControlName="description" value="description" placeholder="codigo">
+              </mat-form-field>
+            </mat-grid-tile>
+            
+            <mat-grid-tile colspan="1" rowspan="1">
+              <mat-form-field appearance="outline">
+                <mat-label>Monto Q.</mat-label>
+                      <input matInput formControlName="value" value="value" placeholder="valor del item Q.">
+              </mat-form-field>
+            </mat-grid-tile>
+            
+          </mat-grid-list>
+        
+        </div>
+
+        <div class="button-container">
+          <button class="btnGreen-grad">Guardar</button>
+          <button class="btnRed-grad" mat-dialog-close>Cerrar</button>
+        </div>
+
+      </form>
+    </div>
+  </div>
+</div>

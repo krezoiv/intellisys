@@ -145,15 +145,12 @@ export class EmployeesService {
     );
   }
 
-  deActivateEmployee(
-    idEmployee: number
-  ) : Observable<EmployeesModel[]>{
+  deActivateEmployee(idEmployee: number): Observable<EmployeesModel[]> {
     return this._http.put<EmployeesModel[]>(
       `${API_URL}/employeeDeactivate/${idEmployee}`,
       this.headers
     );
   }
-
 
   deleteEmployee(idEmployee: number): Observable<EmployeesModel[]> {
     return this._http.delete<EmployeesModel[]>(

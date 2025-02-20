@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { MenusService } from 'src/app/services/menus.service';
 
-
 @Component({
   selector: 'app-sidebar',
   templateUrl: './sidebar.component.html',
@@ -11,15 +10,13 @@ export class SidebarComponent {
 
   sideBarMenuItems: any[];
 
-  constructor( private menuService: MenusService ) {
-
+  constructor(private menuService: MenusService) {
     this.sideBarMenuItems = menuService.sideBarMenu;
-    console.log(this.sideBarMenuItems)
+    console.log(this.sideBarMenuItems); // Agrega este console.log
   }
 
-
-  ngOnInit(): void {
-    
+  toggleSubMenu(item: any): void {
+    item.expanded = !item.expanded;
+    item.isActive = !item.isActive;
   }
-
 }

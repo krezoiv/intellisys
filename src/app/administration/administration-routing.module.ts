@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AdministrationComponent } from './administration.component';
 import { DashboardAdministrationComponent } from './dashboard-administration/dashboard-administration.component';
@@ -8,6 +8,7 @@ import { ListEmployeesComponent } from './employees/list-employees/list-employee
 import { DlpAssignmentComponent } from './employees/dlp-assignment/dlp-assignment.component';
 import { AuthGuard } from '../guards/auth.guard';
 import { ListUsersComponent } from './users/list-users/list-users.component';
+import { NewDataComponent } from './dataCommission/new-data/new-data.component';
 
 
 const routes: Routes = [
@@ -22,6 +23,7 @@ const routes: Routes = [
       { path: 'administracion/usuarios/nuevo-usuario', component: NewUserComponent},
       { path: 'administracion/usuarios/listado-de-usuarios', component: ListUsersComponent},
       { path: 'administracion/asignacion-dlp', component: DlpAssignmentComponent},
+      { path: 'administracion/data-oficial', component: NewDataComponent}
     ],
   },
 ];

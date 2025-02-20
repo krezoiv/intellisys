@@ -32,6 +32,10 @@ import { DlpAssignmentComponent } from './employees/dlp-assignment/dlp-assignmen
 import { MatCardModule } from '@angular/material/card';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { ListUsersComponent } from './users/list-users/list-users.component';
+import { NewDataComponent } from './dataCommission/new-data/new-data.component';
+import { AddNewConceptCommissionDialogComponent } from './dataCommission/add-new-concept-commission-dialog/add-new-concept-commission-dialog.component';
+import { IonicModule } from '@ionic/angular';
+import { UpdateCommissionDetailDialogComponent } from './dataCommission/update-commission-detail-dialog/update-commission-detail-dialog.component';
 
 
 @NgModule({
@@ -47,6 +51,9 @@ import { ListUsersComponent } from './users/list-users/list-users.component';
     DialogDeleteEmployeeComponent,
     DlpAssignmentComponent,
     ListUsersComponent,
+    NewDataComponent,
+    AddNewConceptCommissionDialogComponent,
+    UpdateCommissionDetailDialogComponent,
 
   ],
   exports:[
@@ -63,7 +70,7 @@ import { ListUsersComponent } from './users/list-users/list-users.component';
     ListUsersComponent
   ],
   imports: [
-    
+    IonicModule,
     CommonModule,
     AdministrationRoutingModule,
     SharedModule,
@@ -84,6 +91,7 @@ import { ListUsersComponent } from './users/list-users/list-users.component';
     MatCardModule,
     MatGridListModule,
     ToastrModule.forRoot(), // Agrega ToastrModule a la lista de imports
+    
   ]
 })
 export class AdministrationModule { }

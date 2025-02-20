@@ -22,6 +22,8 @@ const API_URL = environment.API_URL
   providedIn: 'root',
 })
 export class AuthService {
+
+
   private inactivityTimer: any;
   constructor(private http: HttpClient) {}
 
@@ -47,14 +49,15 @@ export class AuthService {
 
     const decodedToken: DecodedToken = jwt_decode(token); // Decodifica el token
 
-    if (!decodedToken || !decodedToken.exp) {
-      return null; // Si el token no se pudo decodificar o no contiene la propiedad 'exp', devuelve null
+    //console.log('Decoded Token:', decodedToken); // Agrega esta línea para verificar el token decodificado
+
+    if (!decodedToken || !decodedToken.exp || !decodedToken.userName) {
+      return null; // Si el token no se pudo decodificar o no contiene la propiedad 'exp' o 'userName', devuelve null
     }
 
     // Calcula la fecha de expiración sumando 5 minutos a la hora actual
     const expirationDate = new Date();
     expirationDate.setMinutes(expirationDate.getMinutes() + 5);
-
 
     const userName = decodedToken.userName;
     return {
@@ -62,8 +65,7 @@ export class AuthService {
       expirationDate,
       userName
     };
-  }
-
+}
   /**
    * Valida un token de autenticación almacenado en el `localStorage` del navegador
    * realizando una solicitud HTTP GET al servidor.
@@ -110,6 +112,7 @@ export class AuthService {
         // Después de recibir una respuesta exitosa, extrae el token y guárdalo en el localStorage
         tap((resp: any) => {
           localStorage.setItem('token', resp.token);
+         
         })
       );
   }
@@ -181,4 +184,22 @@ export class AuthService {
     // Verifica si el usuario tiene un token almacenado
     return !!localStorage.getItem('token');
   }
+
+  getUserNameFromToken(): string | null {
+    const token = localStorage.getItem('token');
+    if (!token) {
+      return null;
+    }
+  
+    try {
+      const decodedToken: any = jwt_decode(token); // Aseguramiento de tipo
+      return decodedToken['usuario'] || null; // Ajusta aquí según el formato del token
+    } catch (error) {
+      console.error('Error al decodificar el token:', error);
+      return null;
+    }
+  }
+
+
+
 }

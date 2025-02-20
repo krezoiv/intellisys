@@ -1,17 +1,25 @@
 <div class="main-sidebar fixed-sidebar">
-    <nav class="main-menu">
-        
+  <nav class="main-menu">
     <ul>
-        <li *ngFor="let item of sideBarMenuItems">
-            <a [routerLink]="item.url">
-                <span class="{{item.icon}}"></span>
-                <span class="nav-text">
-                {{item.title}}
-                </span>
+      <li *ngFor="let item of sideBarMenuItems" [ngClass]="{ 'active': item.isActive }">
+        <a *ngIf="!item.submenu" [routerLink]="item.url">
+          <span class="{{item.icon}}"></span>
+          <span class="nav-text">{{item.title}}</span>
+        </a>
+        <a *ngIf="item.submenu" (click)="toggleSubMenu(item)">
+          <span class="{{item.icon}}"></span>
+          <span class="nav-text">{{item.title}}</span>
+          <i class="fa fa-chevron-down"></i>
+        </a>
+        <ul *ngIf="item.submenu && item.expanded">
+          <li *ngFor="let subitem of item.submenu">
+            <a [routerLink]="subitem.url">
+              <span class="{{subitem.icon}}"></span>
+              <span class="nav-text">{{subitem.title}}</span>
             </a>
-        
-        </li>
-        
+          </li>
+        </ul>
+      </li>
     </ul>
-    </nav>
+  </nav>
 </div>

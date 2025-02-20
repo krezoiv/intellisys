@@ -40,7 +40,7 @@ export class LoginComponent {
   
     this.authService.login(formData).subscribe(
       (response) => {
-        console.log(response);
+       console.log(response);
   
         // Mostrar SweetAlert personalizado
         Swal.fire({

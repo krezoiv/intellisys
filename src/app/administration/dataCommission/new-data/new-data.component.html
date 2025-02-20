@@ -1,0 +1,206 @@
+<div class="heading-container">
+  <h1 class="title">Data de Comisiones</h1>
+</div>
+
+
+  <mat-card class="custom-card"> 
+    <form autocomplete="off" [formGroup]="dataCommissionForm">
+
+      <mat-grid-list cols="3" rowHeight="90px">
+        <mat-grid-tile [colspan]="3" rowspan="1">
+
+          <mat-form-field class="example-full-width" class="form-group">
+            <mat-label>Fecha de Ingreso</mat-label>
+            <input matInput [matDatepicker]="picker" formControlName="batchDataDate" [max]="maxDate">
+            <mat-hint><span>dd/MM/yyyy </span> <span style="font-size: 9px;" *ngIf="isValidField('batchDataDate')"
+                class="form-text text-danger">{{ fieldsErrorMessages.patternRequired}}</span></mat-hint>
+            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Mes de Comision:</mat-label>
+            <mat-select formControlName="idMonth">
+              <mat-option *ngFor="let monthName of months" [value]="monthName.idMonth">
+                {{ monthName.monthName }}
+              </mat-option>
+            </mat-select>
+            <mat-hint> <span style="font-size: 9px;" *ngIf="isValidField('idMonth')"
+                class="form-text text-danger">{{
+                fieldsErrorMessages.required}}</span></mat-hint>
+          </mat-form-field>
+
+          <mat-form-field class="example-full-width">
+            <mat-label>Usuario</mat-label>
+            <input matInput formControlName="userName" [value]="userName" readonly>
+          </mat-form-field>
+       
+        </mat-grid-tile>   
+      </mat-grid-list>
+
+      <mat-grid-list cols="2" rowHeight="90px">
+        <mat-grid-tile [colspan]="1" rowspan="1">
+          <mat-form-field class="example-full-width">
+            <mat-label>TOTAL FACTURA</mat-label>
+            <input matInput formControlName="invoice" placeholder="Q. 0.00" [value]="dataCommissionForm.controls['invoice'].value | number:'1.2-2'"  style="color: green; font-weight: bold;" readonly>
+            
+          </mat-form-field>
+          
+
+          <mat-form-field class="example-full-width">
+            <mat-label>GRAN TOTAL</mat-label>
+            <input matInput formControlName="totalAmount" placeholder="Q. 0.00" [value]="dataCommissionForm.controls['totalAmount'].value | number:'1.2-2'"   style="color: #3498DB ; font-weight: bold;" readonly>
+          </mat-form-field>
+        </mat-grid-tile>
+      </mat-grid-list>
+
+      <mat-grid-list cols="4" rowHeight="90px">
+        <mat-grid-tile [colspan]="1" rowspan="1">
+          <mat-form-field class="example-full-width">
+            <mat-label>TOTAL NC's</mat-label>
+            <input matInput formControlName="ncs" placeholder="Q. 0.00" [value]="dataCommissionForm.controls['ncs'].value | number:'1.2-2'" style="color: red; font-weight: bold;" readonly>
+          </mat-form-field>
+        </mat-grid-tile>
+      </mat-grid-list>
+     
+    </form>
+    <button mat-raised-button color="primary" (click)="createDataCommission()">Guardar Data de Comisión</button>
+  </mat-card>
+
+  <mat-card class="custom-card"> 
+    <form autocomplete="off" [formGroup]="commissionDetailForm">
+      <mat-grid-list cols="4" rowHeight="90px">
+        <mat-grid-tile colspan="1" rowspan="1">
+          <mat-form-field appearance="outline">
+            <mat-label>Tipo de Documento:</mat-label>
+            <mat-select formControlName="idCommissionType" (selectionChange)="onCommissionTypeSelected($event)">
+              <mat-option *ngFor="let commissionType of commissionType" [value]="commissionType.idCommissionType">
+                {{ commissionType.commissionType }}
+              </mat-option>
+            </mat-select>
+            <mat-hint>
+              <span style="font-size: 9px;" *ngIf="isValidField('idMonth')" class="form-text text-danger">
+                {{ fieldsErrorMessages.required }}
+              </span>
+            </mat-hint>
+          </mat-form-field>
+        </mat-grid-tile>
+        
+        <mat-grid-tile colspan="1" rowspan="1">
+          <mat-form-field appearance="outline">
+            <mat-label>Concepto:</mat-label>
+            <mat-select formControlName="idDataCommissionConcept">
+              <mat-option *ngFor="let concepts of commissionConcepts" [value]="concepts.idDataCommissionConcept">
+                {{ concepts.concept }}
+              </mat-option>
+            </mat-select>
+            <mat-hint>
+              <span style="font-size: 9px;" *ngIf="isValidField('idMonth')" class="form-text text-danger">
+                {{ fieldsErrorMessages.required }}
+              </span>
+            </mat-hint>
+          </mat-form-field>
+        </mat-grid-tile>
+        <mat-grid-tile [colspan]="1" rowspan="1" class="button-tile">
+          <button mat-raised-button color="warn" (click)="addNewConcept()" class="custom-button">Agregar Nuevo Concepto</button>
+        </mat-grid-tile>
+        
+        <mat-grid-tile colspan="1" rowspan="1">
+          <mat-form-field class="example-full-width">
+            <mat-label>Referencia</mat-label>
+            <input matInput formControlName="reference" value="reference" placeholder="codigo">
+          </mat-form-field>
+        </mat-grid-tile>
+      </mat-grid-list>
+
+      <mat-grid-list cols="4" rowHeight="90px">
+        <mat-grid-tile colspan="3" rowspan="1">
+          <mat-form-field appearance="outline">
+            <mat-label>Descripción</mat-label>
+            <input matInput formControlName="description" value="description" placeholder="codigo">
+          </mat-form-field>
+        </mat-grid-tile>
+        
+        <mat-grid-tile colspan="1" rowspan="1">
+          <mat-form-field appearance="outline">
+            <mat-label>Monto Q.</mat-label>
+                  <input matInput formControlName="value" value="value" placeholder="valor del item Q.">
+          </mat-form-field>
+        </mat-grid-tile>
+        
+      </mat-grid-list>
+
+    </form>
+    <button mat-raised-button color="primary" (click)="createCommissionDetail()">Guardar Detalle de Comisión</button>
+ 
+  </mat-card>
+  
+  <mat-card class="custom-card">
+    <div class="table-container">
+      <table mat-table [dataSource]="dataSource" matSort>
+
+        <ng-container matColumnDef="idDataDetail">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header  style="text-align: center;"> id </th>
+          <td mat-cell *matCellDef="let element"> {{element.idDataDetail}} </td>
+        </ng-container>
+
+
+        <ng-container matColumnDef="Position">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header  style="text-align: center;"> No. </th>
+          <td mat-cell *matCellDef="let element; let i = index"> {{ i + 1 }} </td>
+        </ng-container>
+
+
+        <ng-container matColumnDef="idDoc">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header  style="text-align: center;"> idDoc </th>
+          <td mat-cell *matCellDef="let element"> {{element.idCommissionType}} </td>
+        </ng-container>
+        
+        <ng-container matColumnDef="Document">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header  style="text-align: center;"> Documento </th>
+          <td mat-cell *matCellDef="let element"> {{element.commissionType}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="Reference">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header  style="text-align: center;"> Referencia </th>
+          <td mat-cell *matCellDef="let element"> {{element.reference}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="Concept">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header  style="text-align: center;"> Concepto </th>
+          <td mat-cell *matCellDef="let element"> {{element.concept}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="Description">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header  style="text-align: center;"> Descripción </th>
+          <td mat-cell *matCellDef="let element"> {{element.description}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="Total">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header style="text-align: center;"> Total </th>
+          <td mat-cell *matCellDef="let element" style="background-color: green; color: white;"> Q. {{ element.value | number:'1.2-2' }} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="actions">
+          <th mat-header-cell *matHeaderCellDef  style="text-align: center;"  style="text-align: center;"> Acciones</th>
+          <td mat-cell *matCellDef="let row">
+            <div class="action-buttons">
+              <button mat-icon-button color="primary" class="pointer" matTooltip="editar dato" (click)="updateCommissionDetail(row)">
+                <mat-icon>edit</mat-icon>
+              </button>
+              
+              <button mat-icon-button color="warn" class="pointer" matTooltip="eliminar dato" (click)="deleteCommissionDetail(row)">
+                <mat-icon>delete</mat-icon>
+              </button>
+            </div>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns" class="table-header"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;" class="highlight"></tr>
+
+      </table>
+    </div>
+  </mat-card>
+
+  

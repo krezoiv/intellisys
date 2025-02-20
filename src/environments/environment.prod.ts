@@ -18,5 +18,5 @@
 export const environment = {
     production: true,
     //TODO: se debe de cambiar el URL con la IP correcta
-    API_URL: 'http://localhost:3000'
+    API_URL: 'http://181.209.203.58:3000'
   };

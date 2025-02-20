@@ -1,0 +1,39 @@
+<div class="container">
+  <div mat-dialog-content>
+    <div class="form-container">
+      <form autocomplete="off" [formGroup]="commissionForm" (ngSubmit)="creatConcept()">
+        <div [align]="'center'">
+          <h1><span>Registrar Nuevo Concepto</span></h1>
+        </div>
+
+        <!-- Contenedor flex para alinear los elementos en columnas -->
+        <div class="flex-container">
+          <!-- Tipo de Documento -->
+          <mat-form-field appearance="outline" class="flex-item1">
+            <mat-label>Tipo de Documento:</mat-label>
+            <mat-select formControlName="idCommissionType" (selectionChange)="onCommissionTypeSelected($event)">
+              <mat-option *ngFor="let commissionType of commissionType" [value]="commissionType.idCommissionType">
+                {{ commissionType.commissionType }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <!-- Concepto -->
+          <mat-form-field appearance="outline">
+          <mat-label>Concepto:</mat-label>
+            <input matInput formControlName="concept" value="concept" placeholder="concepto">
+          </mat-form-field>
+        </div>
+
+
+         
+        <div class="button-container">
+          <button class="btnGreen-grad">Guardar</button>
+          <button class="btnRed-grad" mat-dialog-close>Cerrar</button>
+        </div>
+
+
+      </form>
+    </div>
+  </div>
+</div>

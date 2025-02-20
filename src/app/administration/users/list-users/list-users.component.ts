@@ -61,7 +61,7 @@ export class ListUsersComponent {
     this._userService.getUsersDetails().subscribe(
       (users) => {
         this.dataSource.data = users
-        console.log(users)
+        
       },
       (error) => {
         console.error('Error al obtener la lista de empleados:', error);

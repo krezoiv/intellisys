@@ -1,0 +1,30 @@
+.container {
+  display: flex;
+  justify-content: center;
+  overflow: hidden; /* Evita el desplazamiento vertical */
+}
+
+.form-container {
+  width: 80%;
+}
+
+.flex-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.flex-item1 {
+  width: 50%;
+  margin-bottom: 10px;
+}
+
+.flex-item2 {
+  width: 100%; /* Ajusta al ancho del contenedor padre */
+  margin-bottom: 10px;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}

@@ -8,18 +8,15 @@ import { DatePipe } from '@angular/common';
 import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
 import { MomentDateAdapter, MAT_MOMENT_DATE_ADAPTER_OPTIONS } from '@angular/material-moment-adapter';
 import * as moment from 'moment';
-
-
-
 import { HttpClientModule } from '@angular/common/http';
-import { ReactiveFormsModule, FormsModule } from '@angular/forms'; // Importa FormsModule
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatIconModule } from '@angular/material/icon';
-import { MatMenuModule } from '@angular/material/menu'; // Importa MatMenuModule
+import { MatMenuModule } from '@angular/material/menu';
 import { MatSidenavModule } from '@angular/material/sidenav'
 import { MatListModule } from '@angular/material/list';
 import { MatTableModule } from '@angular/material/table';
@@ -29,13 +26,10 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatDialogModule } from '@angular/material/dialog';
 import {MatCardModule} from '@angular/material/card';
 import {MatGridListModule} from '@angular/material/grid-list';
-
-
-
-
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { SharedModule } from './shared/shared.module';
 import { ToastrModule } from 'ngx-toastr';
+import { IonicModule } from '@ionic/angular'; // Importa IonicModule de Ionic
 
 const MY_FORMATS = {
   parse: {
@@ -52,10 +46,9 @@ const MY_FORMATS = {
 @NgModule({
   declarations: [
     AppComponent,
-
   ],
   imports: [
-    ToastrModule.forRoot(), // ToastrModule added
+    ToastrModule.forRoot(),
     SharedModule,
     BrowserModule,
     AppRoutingModule,
@@ -74,8 +67,8 @@ const MY_FORMATS = {
     BrowserAnimationsModule,
     MatToolbarModule,
     MatIconModule,
-    BrowserAnimationsModule, // Agrega BrowserAnimationsModule
-    MatMenuModule, // Agrega MatMenuModule
+    BrowserAnimationsModule,
+    MatMenuModule,
     MatSidenavModule,
     MatListModule,
     MatMenuModule,
@@ -86,16 +79,15 @@ const MY_FORMATS = {
     MatDialogModule,
     MatCardModule,
     MatGridListModule,
- 
-  
-   
+    IonicModule.forRoot(), // Importa IonicModule con su método forRoot()
   ],
-  
-  providers: [ DatePipe,
-    { provide: MAT_DATE_LOCALE, useValue: 'es-ES' }, // Cambia 'es-ES' por el locale de tu preferencia
-    { provide: MAT_MOMENT_DATE_ADAPTER_OPTIONS, useValue: { useUtc: true } }, // Opciones para MomentDateAdapter
+  providers: [ 
+    DatePipe,
+    { provide: MAT_DATE_LOCALE, useValue: 'es-ES' },
+    { provide: MAT_MOMENT_DATE_ADAPTER_OPTIONS, useValue: { useUtc: true } },
     { provide: DateAdapter, useClass: MomentDateAdapter },
-    { provide: MAT_DATE_FORMATS, useValue: MY_FORMATS },],
+    { provide: MAT_DATE_FORMATS, useValue: MY_FORMATS },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
